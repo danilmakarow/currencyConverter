@@ -1,0 +1,12 @@
+<mat-toolbar  color="primary" class="header flex--space-between margin-0">
+  <div class="flex">
+    <button mat-icon-button class="example-icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h2 class="margin-0">Currency Converter</h2>
+  </div>
+  <div class="flex flex--gap50" *ngIf="currencies$ | async as curr ">
+    <p class="margin-0">USD: {{curr['usd'] | number: '1.2-2' : 'en-US'}} ₴</p>
+    <p class="margin-0">EUR: {{curr['eur'] | number: '1.2-2' : 'en-US'}} ₴</p>
+  </div>
+</mat-toolbar>

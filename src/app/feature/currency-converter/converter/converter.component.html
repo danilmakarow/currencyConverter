@@ -1,0 +1,39 @@
+<form class="example-form">
+  <div class="flex flex--space-evenly">
+    <mat-form-field>
+      <mat-label>Amount</mat-label>
+      <input
+        type="number"
+        matInput
+        [disabled]="(disabled$ | async) || false"
+        placeholder="100.00"
+        [(ngModel)]="leftField"
+        [ngModelOptions]="{standalone: true}"
+        (input)="onLeftInput()"
+      >
+      <span *ngIf="currencies$ | async as cur" matSuffix>
+        {{getCurr(cur.left?.code)}}
+      </span>
+    </mat-form-field>
+
+    <h1 class="heading-secondary">
+      =
+    </h1>
+
+    <mat-form-field>
+      <mat-label>Result</mat-label>
+      <input
+        type="number"
+        matInput
+        [disabled]="(disabled$ | async) || false"
+        placeholder="100.00"
+        [(ngModel)]="rightField"
+        [ngModelOptions]="{standalone: true}"
+        (input)="onRightInput()"
+      >
+      <span *ngIf="currencies$ | async as cur" matSuffix>
+        {{getCurr(cur.right?.code)}}
+      </span>
+    </mat-form-field>
+  </div>
+</form>

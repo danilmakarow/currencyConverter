@@ -1,0 +1,41 @@
+<div class="container">
+  <form class="example-form" [formGroup]="currForm">
+    <div class="flex flex--space-evenly">
+      <mat-form-field>
+        <mat-label>Currency 1</mat-label>
+        <input type="text"
+               maxlength="3"
+               placeholder="Pick one"
+               aria-label="Currency 1"
+               matInput
+               formControlName="leftCurr"
+               [matAutocomplete]="autoLeft">
+        <mat-autocomplete #autoLeft="matAutocomplete">
+          <mat-option *ngFor="let curr of filteredOptionsLeft | async" [value]="curr.code">
+            {{curr.code}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <button mat-icon-button color="basic" (click)="onSwitchCurrencies()">
+        <mat-icon>swap_horiz</mat-icon>
+      </button>
+
+      <mat-form-field>
+        <mat-label>Currency 2</mat-label>
+        <input type="text"
+               maxlength="3"
+               placeholder="Pick one"
+               aria-label="Currency 2"
+               matInput
+               formControlName="rightCurr"
+               [matAutocomplete]="autoRight">
+        <mat-autocomplete #autoRight="matAutocomplete">
+          <mat-option *ngFor="let curr of filteredOptionsRight | async" [value]="curr.code">
+            {{curr.code}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
